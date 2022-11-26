@@ -1,9 +1,12 @@
 const fileControoler = require("./fileControoler");
 
 class Save2Db{
-    index(){
-        const data = fileControoler.uploadFile()
-        console.log(data)
+    index(req, res){
+        try {
+            
+        } catch (error) {
+            return res.status(400).json({message:"Save2Db"});
+        }
     }
 }
 module.exports = new Save2Db()

@@ -8,12 +8,11 @@ class FileController{
             const file = req.files.file.data;
             //const type = file.name.split("."); 
             let parser = new xml2js.Parser();
-            let text;
-            parser.parseStringPromise(file)
-                .then(result=>{
-                    //console.log(text) 
-                    return res.status(200).json(result)                   
-                    })
+            let obj = await parser.parseStringPromise(file).then(result=>result);
+
+
+            return res.status(200).json(obj)  
+
         } catch (error) {
             console.log(error)
             return res.status(400).json({message:"Upload Error"});
